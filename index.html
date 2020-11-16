@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomizer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <p>
+            Here is a simple randomizer.
+        </p>
+        <p>
+            Click on the populate buttons first to populate the inputboxes with random numbers
+        </p>
+        <p>
+            Then pressing 'a' from your keyboard will show the summation of the random numbers that are generated.
+        </p>
+        <p>Things to note from this assignment</p>
+        <ul>
+            <li>How to use randomizar</li>
+            <li>How to use switch control</li>
+            <li>How to use Key Event</li>
+            <li>How to use key code to identify what has been selected</li>
+        </ul>
+        <p>Assignment</p>
+        <p>
+            Allow the user to press 's' from the keyboard to show the subtraction of data1 and data2 and when 'm' then show
+            the mutiplication of data1 and data2
+        </p>
+        <form>
+            <div class="form-group">
+              <label for="data1">Number 1</label>
+              <input type="text" class="form-control" id="data1">
+              <button id="generate1" type="button" class="btn-sm btn-secondary">Populate</button>
+            </div>
+            <div class="form-group">
+              <label for="data2">Number 2</label>
+              <input type="text" class="form-control" id="data2">
+              <button id="generate2" type="button" class="btn-sm btn-secondary">Populate</button>
+            </div>            
+            <div id="result"></div>
+          </form>
+    </div>
+    <script>
+        //get the elements
+        let generate1 = document.querySelector('#generate1');
+        let data1 = document.querySelector('#data1');
+        let generate2 = document.querySelector('#generate2');
+        let data2 = document.querySelector('#data2');
+        let result = document.querySelector('#result');
+        
+        //handle the generate buttons.
+        generate1.addEventListener('click', function(){
+            data1.value = randomNumber();
+        });
+
+        generate2.addEventListener('click', function(){
+            data2.value = randomNumber();
+        });
+        /*
+         * This handles which key the user has pressed to see the result 
+         * see https://www.w3.org/2002/09/tests/keys.html for more to see how each key code is mapped to number
+         */
+        document.querySelector('body').addEventListener('keyup', function(event){
+            switch(event.keyCode) {
+                case 65:
+                case 97:
+                    // the user pressed 'a' meaning the user needs to see addition
+                    result.innerHTML = "Summation of the two numbers is " + (parseInt(data1.value) + parseInt(data2.value));
+                    break;
+
+                case 83:
+                case 115:
+                 // 's' is clicked so we have subtraction  
+                    result.innerHTML = "subtraction of the numbers " + (parseInt(data1.value) - parseInt(data2.value));
+                    break;
+ 
+                case 77:
+                case 109:
+                // 'm' is pressed so we will get the product
+                result.innerHTML = "the product of the numbers " + (data1.value)*(data2.value) 
+                break;
+            }
+        });
+        //function to create random numbers
+        function randomNumber() {
+            return Math.floor(Math.random() * 100);
+        }
+    </script>
+</body>
+</html>
+ 
+ 
+
