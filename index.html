@@ -59,7 +59,7 @@
         
         //handle the generate buttons.
         generate1.addEventListener('click', function(){
-            data1.value = randomNumber();
+            data1.value = randomNumber(200);
         });
 
         generate2.addEventListener('click', function(){
@@ -91,8 +91,8 @@
             }
         });
         //function to create random numbers
-        function randomNumber() {
-            return Math.floor(Math.random() * 100);
+        function randomNumber(range=100) {
+            return Math.floor(Math.random() * range);
         }
     </script>
 </body>
